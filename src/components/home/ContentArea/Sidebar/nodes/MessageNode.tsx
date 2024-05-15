@@ -9,7 +9,7 @@ interface NodeProps {
   text: string;
 }
 
-export default function Node({type, image, text}: NodeProps) {
+export default function MessageNode({type, image, text}: NodeProps) {
   const ref = useRef<HTMLButtonElement>(null);
 
   const [{isDragging}, drag] = useDrag(() => ({

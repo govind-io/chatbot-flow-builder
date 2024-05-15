@@ -1,12 +1,19 @@
 import styles from "@styles/home/home-page.module.scss";
 import {useDrop} from "react-dnd";
-import {useRef, useState} from "react";
-import {GetNode, Node, NodeTypes} from "@constants/nodeTypes";
+import {useContext, useRef} from "react";
+import {NodeTypes} from "@constants/nodeTypes";
+import {GenerateRandomStringId} from "@utils/idGenerator";
+import {GetNode} from "@utils/nodeUtils";
+import {Store} from "@store/context";
 
 export default function ContentArea() {
   const ref = useRef<HTMLDivElement>(null);
 
-  const [activeNodes, setActiveNodes] = useState<Node[]>([]);
+  const context = useContext(Store);
+
+  const activeNodes = context?.store.nodesData || [];
+
+  const setStore = context?.setStore;
 
   // eslint-disable-next-line no-unused-vars
   const [collectedData, drop] = useDrop(() => ({
@@ -20,24 +27,37 @@ export default function ContentArea() {
       };
 
       if (!data.isOver || !data.canDrop) {
-        return false;
+        return {status: false};
       }
 
-      setActiveNodes((prev) => {
-        const defaultPos = 0;
-        return [
+      if (!setStore) {
+        return {status: false};
+      }
+
+      const defaultPos = 0;
+      setStore((prev) => {
+        return {
           ...prev,
-          {
-            node: item.id,
-            posX: data.offset?.x || defaultPos,
-            posY: data.offset?.y || defaultPos,
-          },
-        ];
+          nodesData: [
+            ...prev.nodesData,
+            {
+              node: item.id,
+              posX: data.offset?.x || defaultPos,
+              posY: data.offset?.y || defaultPos,
+              id: GenerateRandomStringId(),
+              text: "",
+            },
+          ],
+        };
       });
+
+      return {status: true};
     },
   }));
 
   drop(ref);
+
+  console.log({activeNodes});
 
   return (
     <div

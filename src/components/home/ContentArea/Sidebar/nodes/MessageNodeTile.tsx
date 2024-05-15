@@ -1,12 +1,39 @@
+import {NodeTypes} from "@constants/nodeTypes";
+import {Store} from "@store/context";
 import styles from "@styles/home/node.module.scss";
 import Image from "next/image";
+import {useContext} from "react";
 
 interface MessageNodeTileProps {
   posX: number;
   posY: number;
+  text: string;
+  id: string;
 }
 
-export default function MessageNodeTile({posX, posY}: MessageNodeTileProps) {
+export default function MessageNodeTile({
+  posX,
+  posY,
+  text,
+  id,
+}: MessageNodeTileProps) {
+  const context = useContext(Store);
+
+  const setStore = context?.setStore;
+
+  const openEditMode = () => {
+    if (!setStore) {
+      return;
+    }
+
+    setStore((prev) => {
+      return {
+        ...prev,
+        clickedNode: {id, posX, posY, text, node: NodeTypes.message.type},
+      };
+    });
+  };
+
   return (
     <div
       className={styles["msg-node-tile-container"]}
@@ -15,6 +42,7 @@ export default function MessageNodeTile({posX, posY}: MessageNodeTileProps) {
         top: posY,
         left: posX,
       }}
+      onClick={openEditMode}
     >
       <div className={styles["msg-node-title"]}>
         <span className={styles["msg-node-title-left"]}>
@@ -35,7 +63,7 @@ export default function MessageNodeTile({posX, posY}: MessageNodeTileProps) {
           />
         </span>
       </div>
-      <div className={styles["msg-node-content"]}>Text content here</div>
+      <div className={styles["msg-node-content"]}>{text}</div>
     </div>
   );
 }
