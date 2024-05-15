@@ -2,12 +2,15 @@
   "globals": {
     "Map": "readonly"
   },
-  "plugins": ["prettier", "import"],
+  "plugins": [
+    "prettier",
+    "import"
+  ],
   "extends": [
-    "next/core-web-vitals",
     "eslint:recommended",
     "plugin:prettier/recommended",
-    "plugin:import/recommended"
+    "plugin:import/recommended",
+    "next/core-web-vitals"
   ],
   "rules": {
     "react/no-children-prop": "off",
@@ -30,11 +33,19 @@
         "ignoreGlobals": true
       }
     ],
-    "complexity": ["error", 22],
-    "curly": ["error", "all", "consistent"],
+    "complexity": [
+      "error",
+      22
+    ],
+    "curly": [
+      "error",
+      "all"
+    ],
     "default-case": "error",
     "default-case-last": "error",
-    "dot-notation": ["error"],
+    "dot-notation": [
+      "error"
+    ],
     "eqeqeq": "error",
     "func-style": [
       "error",
@@ -44,7 +55,10 @@
       }
     ],
     "react-hooks/exhaustive-deps": "off",
-    "max-depth": ["error", 5],
+    "max-depth": [
+      "error",
+      5
+    ],
     "max-lines": [
       "error",
       {
@@ -61,7 +75,10 @@
         "skipComments": true
       }
     ],
-    "max-nested-callbacks": ["error", 5],
+    "max-nested-callbacks": [
+      "error",
+      5
+    ],
     "no-alert": "error",
     "no-bitwise": "error",
     "no-else-return": "error",
@@ -94,51 +111,6 @@
     "require-await": "error",
     "jsx-a11y/alt-text": "error",
     "@next/next/no-img-element": "error",
-    "prettier/prettier": "error",
-    "import/order": [
-      "error",
-      {
-        "alphabetize": {
-          "order": "asc",
-          "caseInsensitive": true
-        },
-        "newlines-between": "always",
-        "pathGroups": [
-          {
-            "pattern": "react",
-            "group": "external",
-            "position": "before"
-          },
-          {
-            "pattern": "*.css",
-            "group": "index",
-            "position": "before"
-          },
-          {
-            "pattern": "@components/**",
-            "group": "parent"
-          },
-          {
-            "pattern": "@common/**",
-            "group": "parent"
-          },
-          {
-            "pattern": "@hooks/**",
-            "group": "parent"
-          },
-          {
-            "pattern": "@utils/**",
-            "group": "parent"
-          }
-        ],
-        "groups": [
-          "builtin",
-          "external",
-          "index",
-          "parent",
-          ["internal", "sibling"]
-        ]
-      }
-    ]
+    "prettier/prettier": "error"
   }
 }
