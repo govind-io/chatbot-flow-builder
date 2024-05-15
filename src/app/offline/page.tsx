@@ -1,7 +1,7 @@
-'use client';
-import styles from '@styles/common/default-page.module.scss';
-import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+"use client";
+import styles from "@styles/common/default-page.module.scss";
+import {useRouter} from "next/navigation";
+import {useEffect} from "react";
 
 export default function Offline() {
   const router = useRouter();
@@ -9,7 +9,7 @@ export default function Offline() {
   //redirect to home if user is connected to network
   useEffect(() => {
     if (navigator.onLine) {
-      return router.push('/');
+      return router.push("/");
     }
   }, []);
 
@@ -24,7 +24,10 @@ export default function Offline() {
         Oops! Seems like you are facing some network issue
       </p>
 
-      <button className={styles.button} onClick={refreshPage}>
+      <button
+        className={styles.button}
+        onClick={refreshPage}
+      >
         Refresh the page
       </button>
     </div>

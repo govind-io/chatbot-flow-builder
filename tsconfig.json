@@ -22,15 +22,18 @@
       }
     ],
     "paths": {
-      "@/*": [
-        "./src/*"
-      ],
       "@styles/*": [
         "./src/styles/*"
       ],
       "@utils/*": [
         "./src/utils/*"
-      ]
+      ],
+      "@components/*": [
+        "./src/components/*"
+      ],
+      "@/*": [
+        "./src/*"
+      ],
     }
   },
   "include": [

@@ -1,21 +1,21 @@
-const cacheName = 'cache-v1';
+const cacheName = "cache-v1";
 const HttpSuccessCode = 200;
 
 const openCache = async () => {
   try {
     const cache = await caches.open(cacheName);
-    console.log('cache opened');
+    console.log("cache opened");
     return cache;
   } catch (error) {
-    console.log('could not open cache');
+    console.log("could not open cache");
     return undefined;
   }
 };
 
 const setInitialCache = async () => {
   const cache = await openCache();
-  await cache.add('/offline');
-  console.log('added offline to the cache');
+  await cache.add("/offline");
+  console.log("added offline to the cache");
 };
 
 /**
@@ -42,9 +42,9 @@ const getCachedResponse = async (e, cache) => {
       // If found in the cache and user is offline, return the cached version
       return cachedResponse;
     }
-    return await cache.match('/offline');
+    return await cache.match("/offline");
   } catch (error) {
-    return await cache.match('/offline');
+    return await cache.match("/offline");
   }
 };
 
@@ -69,15 +69,15 @@ const respondWith = async (e) => {
   return await getCachedResponse(e, cache);
 };
 
-self.addEventListener('install', (e) => {
-  console.log('service worker installed');
+self.addEventListener("install", (e) => {
+  console.log("service worker installed");
   e.waitUntil(setInitialCache());
 });
 
-self.addEventListener('activate', () => {
-  console.log('service worker activated');
+self.addEventListener("activate", () => {
+  console.log("service worker activated");
 });
 
-self.addEventListener('fetch', (e) => {
+self.addEventListener("fetch", (e) => {
   e.respondWith(respondWith(e));
 });

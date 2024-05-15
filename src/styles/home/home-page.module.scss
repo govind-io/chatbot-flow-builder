@@ -1,0 +1,49 @@
+@import '../variables';
+
+.container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: $headerHeight;
+    background-color: $headerBgColor;
+    padding:2rem 4rem;
+    button {
+        border:1px solid $headerBtnBdrColor;
+        padding:5px 30px;
+        border-radius: 8px;
+        background-color: $headerBtnBgColor;
+        cursor: pointer;
+        color:#7b84ae;
+        font: 12px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        &:hover{
+            background-color: $headerBtnBgHoverColor;
+        }
+                
+    }
+}
+
+.home-container {
+    display: flex;
+    width: 100vw;
+    height: calc(100vh - $headerHeight);
+    overflow-y: auto;
+    justify-content: center;
+}
+
+.sidebar-container {
+    width:$sidebarWidth;
+    height: 100%;
+    overflow-y: auto;
+    border:2px solid $sidebarBdrClr;
+}
+
+.content-container {
+    width: calc(100% - $sidebarWidth);
+}
+
+.node-panel-container {
+    padding: 10px;
+}
+
+
