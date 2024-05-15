@@ -1,9 +1,21 @@
 import styles from "@styles/home/node.module.scss";
 import Image from "next/image";
 
-export default function MessageNodeTile() {
+interface MessageNodeTileProps {
+  posX: number;
+  posY: number;
+}
+
+export default function MessageNodeTile({posX, posY}: MessageNodeTileProps) {
   return (
-    <div className={styles["msg-node-tile-container"]}>
+    <div
+      className={styles["msg-node-tile-container"]}
+      style={{
+        position: "absolute",
+        top: posY,
+        left: posX,
+      }}
+    >
       <div className={styles["msg-node-title"]}>
         <span className={styles["msg-node-title-left"]}>
           <Image
