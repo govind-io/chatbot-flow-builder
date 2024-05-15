@@ -1,3 +1,144 @@
 {
-  "extends": "next/core-web-vitals"
+  "globals": {
+    "Map": "readonly"
+  },
+  "plugins": ["prettier", "import"],
+  "extends": [
+    "next/core-web-vitals",
+    "eslint:recommended",
+    "plugin:prettier/recommended",
+    "plugin:import/recommended"
+  ],
+  "rules": {
+    "react/no-children-prop": "off",
+    "array-callback-return": "error",
+    "no-await-in-loop": "error",
+    "no-constant-binary-expression": "error",
+    "no-duplicate-imports": "error",
+    "no-promise-executor-return": "error",
+    "no-self-compare": "error",
+    "no-unmodified-loop-condition": "error",
+    "no-unreachable-loop": "error",
+    "no-use-before-define": "error",
+    "require-atomic-updates": "error",
+    "camelcase": [
+      "error",
+      {
+        "properties": "never",
+        "ignoreDestructuring": true,
+        "ignoreImports": true,
+        "ignoreGlobals": true
+      }
+    ],
+    "complexity": ["error", 22],
+    "curly": ["error", "multi", "consistent"],
+    "default-case": "error",
+    "default-case-last": "error",
+    "dot-notation": ["error"],
+    "eqeqeq": "error",
+    "func-style": [
+      "error",
+      "declaration",
+      {
+        "allowArrowFunctions": true
+      }
+    ],
+    "react-hooks/exhaustive-deps": "off",
+    "max-depth": ["error", 5],
+    "max-lines": [
+      "error",
+      {
+        "max": 400,
+        "skipBlankLines": true,
+        "skipComments": true
+      }
+    ],
+    "max-lines-per-function": [
+      "error",
+      {
+        "max": 400,
+        "skipBlankLines": true,
+        "skipComments": true
+      }
+    ],
+    "max-nested-callbacks": ["error", 5],
+    "no-alert": "error",
+    "no-bitwise": "error",
+    "no-else-return": "error",
+    "no-empty-function": "error",
+    "no-eval": "error",
+    "no-extra-boolean-cast": "error",
+    "no-extra-semi": "error",
+    "no-floating-decimal": "error",
+    "no-inline-comments": "error",
+    "no-invalid-this": "error",
+    "no-lone-blocks": "error",
+    "no-lonely-if": "error",
+    "no-loop-func": "error",
+    "no-magic-numbers": "warn",
+    "no-multi-assign": "error",
+    "no-new-func": "error",
+    "no-param-reassign": "error",
+    "no-redeclare": "error",
+    "no-shadow": "error",
+    "no-throw-literal": "error",
+    "no-unneeded-ternary": "error",
+    "no-useless-catch": "error",
+    "no-useless-computed-key": "error",
+    "no-useless-rename": "error",
+    "no-var": "error",
+    "object-shorthand": "error",
+    "prefer-const": "error",
+    "prefer-template": "error",
+    "prefer-spread": "error",
+    "require-await": "error",
+    "jsx-a11y/alt-text": "error",
+    "@next/next/no-img-element": "error",
+    "prettier/prettier": "error",
+    "import/order": [
+      "error",
+      {
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        },
+        "newlines-between": "always",
+        "pathGroups": [
+          {
+            "pattern": "react",
+            "group": "external",
+            "position": "before"
+          },
+          {
+            "pattern": "*.css",
+            "group": "index",
+            "position": "before"
+          },
+          {
+            "pattern": "@components/**",
+            "group": "parent"
+          },
+          {
+            "pattern": "@common/**",
+            "group": "parent"
+          },
+          {
+            "pattern": "@hooks/**",
+            "group": "parent"
+          },
+          {
+            "pattern": "@utils/**",
+            "group": "parent"
+          }
+        ],
+        "groups": [
+          "builtin",
+          "external",
+          "index",
+          "parent",
+          ["internal", "sibling"]
+        ]
+      }
+    ]
+  }
 }
