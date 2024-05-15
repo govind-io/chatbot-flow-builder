@@ -31,7 +31,7 @@
       }
     ],
     "complexity": ["error", 22],
-    "curly": ["error", "multi", "consistent"],
+    "curly": ["error", "all", "consistent"],
     "default-case": "error",
     "default-case-last": "error",
     "dot-notation": ["error"],
