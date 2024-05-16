@@ -2,7 +2,7 @@ import {NodeTypes} from "@constants/nodeTypes";
 import {Store} from "@store/context";
 import styles from "@styles/home/node.module.scss";
 import Image from "next/image";
-import {ReactNode, useContext} from "react";
+import {useContext} from "react";
 import {Handle, Position} from "reactflow";
 
 interface MessageNodeTileProps {
