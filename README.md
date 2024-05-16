@@ -1,36 +1,95 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# Chatbot Flow Builder
 
-First, run the development server:
+This project is a chatbot flow builder application built using Next.js.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Table of Contents
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- [Installation](#installation)
+- [Scripts](#scripts)
+- [Dependencies](#dependencies)
+- [DevDependencies](#devdependencies)
+- [License](#license)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Installation
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+To install the necessary dependencies, ensure that you have [pnpm](https://pnpm.io/) installed. Then, run the following command:
 
-## Learn More
+\`\`\`bash
+pnpm install
+\`\`\`
 
-To learn more about Next.js, take a look at the following resources:
+## Scripts
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Here are the scripts available in this project:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- **preinstall**: Ensures that pnpm is used as the package manager.
+- **dev**: Starts the development server.
+  \`\`\`bash
+  pnpm dev
+  \`\`\`
+- **build**: Builds the application for production.
+  \`\`\`bash
+  pnpm build
+  \`\`\`
+- **start**: Starts the production server.
+  \`\`\`bash
+  pnpm start
+  \`\`\`
+- **lint**: Runs ESLint to lint the codebase.
+  \`\`\`bash
+  pnpm lint
+  \`\`\`
+- **prepare**: Prepares husky for Git hooks.
+  \`\`\`bash
+  pnpm prepare
+  \`\`\`
+- **format**: Formats the codebase using Prettier.
+  \`\`\`bash
+  pnpm format
+  \`\`\`
+- **check-types**: Checks TypeScript types.
+  \`\`\`bash
+  pnpm check-types
+  \`\`\`
+- **check-all**: Runs lint, format, and type checking.
+  \`\`\`bash
+  pnpm check-all
+  \`\`\`
 
-## Deploy on Vercel
+## Dependencies
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **install**: \`^0.13.0\`
+- **next**: \`14.2.3\`
+- **react**: \`^18\`
+- **react-dnd**: \`^16.0.1\`
+- **react-dnd-html5-backend**: \`^16.0.1\`
+- **react-dom**: \`^18\`
+- **react-toastify**: \`^10.0.5\`
+- **reactflow**: \`^11.11.3\`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## DevDependencies
+
+- **@types/node**: \`^20\`
+- **@types/react**: \`^18\`
+- **@types/react-dom**: \`^18\`
+- **eslint**: \`^8\`
+- **eslint-config-next**: \`14.2.3\`
+- **eslint-config-prettier**: \`^9.1.0\`
+- **eslint-plugin-prettier**: \`^5.1.3\`
+- **husky**: \`^9.0.11\`
+- **prettier**: \`^3.2.5\`
+- **sass**: \`^1.77.1\`
+- **typescript**: \`^5\`
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+## Live Link
+
+Check out the live version of the project [here](https://your-live-link.com).
+
+## Copyright
+
+© 2024 Govind Sharma. All rights reserved.
