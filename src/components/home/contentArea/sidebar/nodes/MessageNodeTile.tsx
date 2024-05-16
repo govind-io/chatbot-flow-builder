@@ -15,6 +15,8 @@ interface MessageNodeTileProps {
 function MessageNodeTile({posX, posY, data, id}: MessageNodeTileProps) {
   const context = useContext(Store);
 
+  const store = context?.store;
+
   const setStore = context?.setStore;
 
   const openEditMode = () => {
@@ -40,6 +42,9 @@ function MessageNodeTile({posX, posY, data, id}: MessageNodeTileProps) {
       <div
         className={styles["msg-node-tile-container"]}
         onClick={openEditMode}
+        style={{
+          borderColor: store?.clickedNode?.id === id ? "#8384a5" : "#dfdfdf",
+        }}
       >
         <div className={styles["msg-node-title"]}>
           <span className={styles["msg-node-title-left"]}>

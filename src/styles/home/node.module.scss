@@ -21,17 +21,19 @@
     }
 }
 
+
 .msg-node-tile-container {
  display: flex;
- border:2px solid #8384a5;
+ border:2px solid #dfdfdf;
  width: 300px;
  border-radius: 12px;
  flex-wrap: wrap;
  cursor: pointer;
+ box-shadow: 0 10px 15px #dfdfdf;
  .msg-node-title {
     padding: 5px 10px;
     width: 100%;
-    border-bottom:2px solid #8384a5 ;
+    border-bottom:2px solid #dfdfdf;
     display: flex;
     justify-content: space-between;
     align-items: center;
