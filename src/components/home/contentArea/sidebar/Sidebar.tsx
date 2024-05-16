@@ -1,10 +1,10 @@
 import styles from "@styles/home/home-page.module.scss";
 import NodePanel from "./NodePanel";
 import SettingsPanel from "./SettingsPanel";
-import {useContext} from "react";
+import {memo, useContext} from "react";
 import {Store} from "@store/context";
 
-export default function SideBar() {
+function SideBar() {
   const context = useContext(Store);
 
   const clickedNode = context?.store.clickedNode;
@@ -15,3 +15,5 @@ export default function SideBar() {
     </div>
   );
 }
+
+export default memo(SideBar);

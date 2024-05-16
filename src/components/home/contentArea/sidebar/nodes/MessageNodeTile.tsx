@@ -2,7 +2,7 @@ import {NodeTypes} from "@constants/nodeTypes";
 import {Store} from "@store/context";
 import styles from "@styles/home/node.module.scss";
 import Image from "next/image";
-import {useContext} from "react";
+import {memo, useContext} from "react";
 import {Handle, Position} from "reactflow";
 
 interface MessageNodeTileProps {
@@ -12,12 +12,7 @@ interface MessageNodeTileProps {
   id: string;
 }
 
-export default function MessageNodeTile({
-  posX,
-  posY,
-  data,
-  id,
-}: MessageNodeTileProps) {
+function MessageNodeTile({posX, posY, data, id}: MessageNodeTileProps) {
   const context = useContext(Store);
 
   const setStore = context?.setStore;
@@ -78,3 +73,5 @@ export default function MessageNodeTile({
     </>
   );
 }
+
+export default memo(MessageNodeTile);

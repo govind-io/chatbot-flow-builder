@@ -1,13 +1,13 @@
 import {NodeData} from "@constants/nodeTypes";
 import {Store} from "@store/context";
 import styles from "@styles/home/settings.module.scss";
-import {ChangeEvent, useContext} from "react";
+import {ChangeEvent, memo, useContext} from "react";
 
 interface messageNodeEditorProp {
   id: string;
 }
 
-export default function MessageNodeEditor({id}: messageNodeEditorProp) {
+function MessageNodeEditor({id}: messageNodeEditorProp) {
   const context = useContext(Store);
 
   const setStore = context?.setStore;
@@ -59,3 +59,5 @@ export default function MessageNodeEditor({id}: messageNodeEditorProp) {
     </div>
   );
 }
+
+export default memo(MessageNodeEditor);

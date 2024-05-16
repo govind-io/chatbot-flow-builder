@@ -1,15 +1,19 @@
 import Image from "next/image";
 import styles from "@styles/home/settings.module.scss";
-import {useContext} from "react";
+import {memo, useContext, useEffect} from "react";
 import {Store} from "@store/context";
 import {GetNodeEditor} from "@utils/nodeUtils";
 
-export default function SettingsPanel() {
+function SettingsPanel() {
   const context = useContext(Store);
 
-  const nodeData = context?.store.clickedNode;
+  const store = context?.store;
+
+  const nodeData = store?.clickedNode;
 
   const setStore = context?.setStore;
+
+  const allNodes = store?.nodesData;
 
   const backToNodesPanel = () => {
     if (!setStore) {
@@ -20,6 +24,12 @@ export default function SettingsPanel() {
       return {...prev, clickedNode: null};
     });
   };
+
+  useEffect(() => {
+    if (!allNodes?.find((node) => node.id === nodeData?.id)) {
+      backToNodesPanel();
+    }
+  }, [allNodes]);
 
   return (
     <div>
@@ -42,3 +52,5 @@ export default function SettingsPanel() {
     </div>
   );
 }
+
+export default memo(SettingsPanel);
