@@ -3,14 +3,14 @@
 import HomeHeader from "@components/home/Header";
 import {registerServiceWorker} from "@/utils/registerServiceWorker";
 import {useEffect} from "react";
-import ContentArea from "@components/home/contentArea/ContentArea";
-import SideBar from "@components/home/contentArea/sidebar/Sidebar";
 import styles from "@styles/home/home-page.module.scss";
 import {DndProvider} from "react-dnd";
 import {HTML5Backend} from "react-dnd-html5-backend";
 import StoreProvider from "@/store/provider";
 import {ToastContainer} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ContentArea from "@components/home/contentArea/ContentArea";
+import SideBar from "@components/home/contentArea/sidebar/Sidebar";
 
 export default function Home() {
   useEffect(() => {
