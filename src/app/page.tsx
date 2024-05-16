@@ -11,6 +11,7 @@ import {ToastContainer} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ContentArea from "@components/home/contentArea/ContentArea";
 import SideBar from "@components/home/contentArea/sidebar/Sidebar";
+import {ReactFlowProvider} from "reactflow";
 
 export default function Home() {
   useEffect(() => {
@@ -19,16 +20,19 @@ export default function Home() {
 
   return (
     <main>
-      <StoreProvider>
-        <ToastContainer />
-        <HomeHeader />
-        <DndProvider backend={HTML5Backend}>
-          <div className={styles["home-container"]}>
-            <ContentArea />
-            <SideBar />
-          </div>
-        </DndProvider>
-      </StoreProvider>
+      <ReactFlowProvider>
+        <StoreProvider>
+          <ToastContainer />
+
+          <HomeHeader />
+          <DndProvider backend={HTML5Backend}>
+            <div className={styles["home-container"]}>
+              <ContentArea />
+              <SideBar />
+            </div>
+          </DndProvider>
+        </StoreProvider>
+      </ReactFlowProvider>
     </main>
   );
 }

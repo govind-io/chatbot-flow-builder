@@ -1,6 +1,6 @@
 import styles from "@styles/home/node.module.scss";
 import Image from "next/image";
-import {useRef} from "react";
+import {memo, useRef} from "react";
 import {useDrag} from "react-dnd";
 
 interface NodeProps {
@@ -9,7 +9,7 @@ interface NodeProps {
   text: string;
 }
 
-export default function MessageNode({type, image, text}: NodeProps) {
+function MessageNode({type, image, text}: NodeProps) {
   const ref = useRef<HTMLButtonElement>(null);
 
   const [{isDragging}, drag] = useDrag(() => ({
@@ -50,3 +50,5 @@ export default function MessageNode({type, image, text}: NodeProps) {
     </>
   );
 }
+
+export default memo(MessageNode);

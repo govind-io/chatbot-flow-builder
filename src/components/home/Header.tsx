@@ -1,12 +1,15 @@
-import {Store} from "@store/context";
+import useDownload from "@/hooks/useDownload";
+import {Store, defaultStore, storeType} from "@store/context";
 import styles from "@styles/home/home-page.module.scss";
 import ToastHandler from "@utils/toastHandler";
-import {useContext} from "react";
+import {memo, useContext} from "react";
 
-export default function HomeHeader() {
+function HomeHeader() {
   const context = useContext(Store);
 
   const store = context?.store;
+
+  const setStore = context?.setStore;
 
   const isValidFlow = () => {
     const nodesWithTarget = store?.edgesData.map((edge) => edge.target) || [];
@@ -28,8 +31,13 @@ export default function HomeHeader() {
     return true;
   };
 
-  const saveChanges = () => {
-    if (!store) {
+  const download = useDownload(isValidFlow);
+
+  const saveChanges = (
+    customStore: storeType | undefined = store,
+    message: string = "Flow saved succesfully",
+  ) => {
+    if (!customStore) {
       return;
     }
 
@@ -37,14 +45,28 @@ export default function HomeHeader() {
       return;
     }
 
-    localStorage.setItem("store", JSON.stringify(store));
+    localStorage.setItem("store", JSON.stringify(customStore));
 
-    ToastHandler({type: "sus", messages: "Flow saved succesfully"});
+    ToastHandler({type: "sus", messages: message});
+  };
+
+  const reset = () => {
+    if (!setStore) {
+      return;
+    }
+
+    setStore(defaultStore);
+
+    saveChanges(defaultStore, "Changes reset");
   };
 
   return (
     <div className={styles.container}>
-      <button onClick={saveChanges}> Save changes</button>
+      <button onClick={() => saveChanges()}> Save changes</button>
+      <button onClick={download}> Download</button>
+      <button onClick={reset}>Reset</button>
     </div>
   );
 }
+
+export default memo(HomeHeader);
