@@ -1,50 +1,78 @@
-@import '../variables';
+@import "../variables";
 
 .container {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    height: $headerHeight;
-    background-color: $headerBgColor;
-    padding:2rem 4rem;
-    button {
-        border:1px solid $headerBtnBdrColor;
-        padding:5px 30px;
-        border-radius: 8px;
-        background-color: $headerBtnBgColor;
-        cursor: pointer;
-        color:#7b84ae;
-        font: 12px;
-        margin-right: 10px;
-        transition: background-color 0.3s ease, color 0.3s ease;
-        &:hover{
-            background-color: $headerBtnBgHoverColor;
-        }
-                
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: $headerHeight;
+  background-color: $headerBgColor;
+  padding: 2rem 4rem;
+  button {
+    color: #fff;
+    padding: 15px 25px;
+    background-color: $headerBtnBgColor;
+    background-image: $headerBtnBgImage;
+    box-shadow: $headerBtnBgShadow;
+    border-radius: 14px;
+    font-weight: bold;
+    font-size: 16px;
+    border: 0;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    cursor: pointer;
+    margin-right: 10px;
+    &:hover {
+      background-color: $headerBtnBgHoverColor;
+      color: black;
     }
+  }
 }
 
 .home-container {
-    display: flex;
-    width: 100vw;
-    height: calc(100vh - $headerHeight);
-    overflow-y: auto;
-    justify-content: center;
+  display: flex;
+  width: 100vw;
+  height: calc(100vh - $headerHeight);
+  overflow-y: auto;
+  justify-content: center;
 }
 
 .sidebar-container {
-    width:$sidebarWidth;
-    height: 100%;
-    overflow-y: auto;
-    border:2px solid $sidebarBdrClr;
+  width: $sidebarWidth;
+  height: 100%;
+  overflow-y: auto;
+  border: 2px solid $sidebarBdrClr;
 }
 
 .content-container {
-    width: calc(100% - $sidebarWidth);
+  width: calc(100% - $sidebarWidth);
 }
 
 .node-panel-container {
-    padding: 10px;
+  padding: 10px;
 }
 
-
+.flow-panel {
+  padding: 6px 14px;
+  font-family: -apple-system, BlinkMacSystemFont, "Roboto", sans-serif;
+  border-radius: 6px;
+  border: none;
+  color: #fff;
+  background: linear-gradient(180deg, #4b91f7 0%, #367af6 100%);
+  background-origin: border-box;
+  box-shadow:
+    0px 0.5px 1.5px rgba(54, 122, 246, 0.25),
+    inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  margin-right: 10px;
+  cursor: pointer;
+  &.active {
+    box-shadow:
+      inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2),
+      0px 0.5px 1.5px rgba(54, 122, 246, 0.25),
+      0px 0px 0px 3.5px rgba(58, 108, 217, 0.5);
+    outline: 0;
+  }
+}
