@@ -88,7 +88,7 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Live Link
 
-Check out the live version of the project [here](chatbot-flow-builder-git-main-govind-ios-projects.vercel.app) or [here](chatbot-flow-builder-efxirepjq-govind-ios-projects.vercel.app).
+Check out the live version of the project [here](https://chatbot-flow-builder-2wvi.vercel.app/).
 
 ## Copyright
 
