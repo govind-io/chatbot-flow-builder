@@ -1,3 +1,5 @@
+@import "../_variables.scss";
+
 .button {
     display:flex;
     align-items: center;
@@ -19,17 +21,19 @@
         font-size: 16px;
         margin-top: 10px;
     }
+           box-shadow: $sidebarItemBoxShadow;
 }
 
 
 .msg-node-tile-container {
  display: flex;
  border:2px solid #dfdfdf;
+ background-color: white;
  width: 300px;
  border-radius: 12px;
  flex-wrap: wrap;
  cursor: pointer;
- box-shadow: 0 10px 15px #dfdfdf;
+ box-shadow: $nodeTileBoxShadow;
  .msg-node-title {
     padding: 5px 10px;
     width: 100%;
