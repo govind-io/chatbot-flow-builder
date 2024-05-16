@@ -21,7 +21,7 @@ export default function MessageNode({type, image, text}: NodeProps) {
       isDragging: monitor.isDragging(),
     }),
     item: {
-      id: type,
+      type,
     },
   }));
 
@@ -31,20 +31,22 @@ export default function MessageNode({type, image, text}: NodeProps) {
   drag(ref);
 
   return (
-    <button
-      className={styles.button}
-      ref={ref}
-      style={{opacity: isDragging ? translucent : opaque}}
-    >
-      <span>
-        <Image
-          src={image}
-          width={40}
-          height={40}
-          alt="message icon"
-        />
-      </span>
-      <span className={styles.text}>{text}</span>
-    </button>
+    <>
+      <button
+        className={styles.button}
+        ref={ref}
+        style={{opacity: isDragging ? translucent : opaque}}
+      >
+        <span>
+          <Image
+            src={image}
+            width={40}
+            height={40}
+            alt="message icon"
+          />
+        </span>
+        <span className={styles.text}>{text}</span>
+      </button>
+    </>
   );
 }

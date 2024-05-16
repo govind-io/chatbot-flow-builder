@@ -38,7 +38,7 @@ export default function SettingsPanel() {
         <h6 className={styles["setting-heading"]}>Messages</h6>
       </div>
 
-      {nodeData ? GetNodeEditor({node: nodeData.node, id: nodeData.id}) : <></>}
+      {nodeData ? GetNodeEditor({type: nodeData.type, id: nodeData.id}) : <></>}
     </div>
   );
 }

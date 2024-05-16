@@ -14,7 +14,7 @@ export default function MessageNodeEditor({id}: messageNodeEditorProp) {
 
   const store = context?.store;
 
-  const text = store?.clickedNode?.text;
+  const text = store?.clickedNode?.data.text;
 
   const changeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
     if (!setStore || !store) {
@@ -26,7 +26,7 @@ export default function MessageNodeEditor({id}: messageNodeEditorProp) {
     const updatedNodesData = store?.nodesData.map((node) => {
       //updating the node text if it's the one being edited, we can make nodes data as object instead of array to make it more performant on both, retrieval and updation sides
       if (node.id === id) {
-        return {...node, text: newText};
+        return {...node, data: {text: newText}};
       }
 
       return node;
@@ -36,7 +36,7 @@ export default function MessageNodeEditor({id}: messageNodeEditorProp) {
 
     const updatedClickNodeData = {
       ...store.clickedNode,
-      text: newText,
+      data: {text: newText},
     } as NodeData;
 
     setStore((prev) => {

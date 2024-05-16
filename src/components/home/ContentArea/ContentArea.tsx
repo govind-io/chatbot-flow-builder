@@ -1,75 +1,50 @@
 import styles from "@styles/home/home-page.module.scss";
-import {useDrop} from "react-dnd";
-import {useContext, useRef} from "react";
-import {NodeTypes} from "@constants/nodeTypes";
-import {GenerateRandomStringId} from "@utils/idGenerator";
-import {GetNode} from "@utils/nodeUtils";
+import {useContext, useMemo, useRef} from "react";
 import {Store} from "@store/context";
+import ReactFlow, {Background, Controls, ReactFlowProvider} from "reactflow";
+import "reactflow/dist/style.css";
+import MessageNodeTile from "./sidebar/nodes/MessageNodeTile";
+import useDropEnhanced from "@/hooks/useDropEnhanced";
+
+import useFlowEvents from "@/hooks/useFlowEvents";
 
 export default function ContentArea() {
   const ref = useRef<HTMLDivElement>(null);
 
   const context = useContext(Store);
 
-  const activeNodes = context?.store.nodesData || [];
+  const nodes = context?.store.nodesData || [];
 
-  const setStore = context?.setStore;
+  const edges = context?.store.edgesData || [];
 
-  // eslint-disable-next-line no-unused-vars
-  const [collectedData, drop] = useDrop(() => ({
-    accept: "node",
-    drop(item: {id: keyof typeof NodeTypes}, monitor) {
-      const data = {
-        isOver: monitor.isOver(),
-        canDrop: monitor.canDrop(),
-        result: monitor.getDropResult(),
-        offset: monitor.getSourceClientOffset(),
-      };
+  const {onConnect, onEdgesChange, onNodesChange} = useFlowEvents();
 
-      if (!data.isOver || !data.canDrop) {
-        return {status: false};
-      }
-
-      if (!setStore) {
-        return {status: false};
-      }
-
-      const defaultPos = 0;
-      setStore((prev) => {
-        return {
-          ...prev,
-          nodesData: [
-            ...prev.nodesData,
-            {
-              node: item.id,
-              posX: data.offset?.x || defaultPos,
-              posY: data.offset?.y || defaultPos,
-              id: GenerateRandomStringId(),
-              text: "",
-            },
-          ],
-        };
-      });
-
-      return {status: true};
-    },
-  }));
+  const drop = useDropEnhanced();
 
   drop(ref);
 
-  console.log({activeNodes});
+  const customNodes = useMemo(() => {
+    return {message: MessageNodeTile};
+  }, []);
 
   return (
     <div
       className={styles["content-container"]}
       ref={ref}
-      style={{
-        position: "relative",
-      }}
     >
-      {activeNodes.map((item) => {
-        return GetNode(item);
-      })}
+      <ReactFlowProvider>
+        <ReactFlow
+          nodeTypes={customNodes as any}
+          nodes={nodes}
+          edges={edges}
+          onNodesChange={onNodesChange}
+          onEdgesChange={onEdgesChange}
+          onConnect={onConnect}
+        >
+          <Background />
+          <Controls />
+        </ReactFlow>
+      </ReactFlowProvider>
     </div>
   );
 }

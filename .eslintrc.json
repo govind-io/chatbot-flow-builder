@@ -9,7 +9,6 @@
   "extends": [
     "eslint:recommended",
     "plugin:prettier/recommended",
-    "plugin:import/recommended",
     "next/core-web-vitals"
   ],
   "rules": {

@@ -8,9 +8,8 @@ export const NodeTypes = {
 } as const;
 
 export type NodeData = {
-  node: keyof typeof NodeTypes;
-  posX: number;
-  posY: number;
+  type: keyof typeof NodeTypes;
+  position: {x: number; y: number};
   id: string;
-  text: string;
+  data: {text: string};
 };
