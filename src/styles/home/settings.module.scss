@@ -1,0 +1,39 @@
+@import '../variables';
+
+.setting-panel-header {
+    padding:10px 20px;
+    border-bottom: 2px solid $sidebarBdrClr;
+    display: flex;
+    align-items: center;
+    .setting-back-btn {
+        cursor: pointer;
+        border: none;
+        background-color: transparent;
+    }
+    .setting-heading {
+        text-align: center;
+        width: 100%;
+        font-size: 16px;
+        font-weight: 400;
+    }
+}
+
+.msg-node-editor-container {
+    border-bottom: 2px solid $sidebarBdrClr;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 10px 20px;
+    .msg-node-editor-title{
+        margin-bottom: 10px;
+        text-align: left;
+        width: 100%;
+        font-size: 16px;
+        color: #b0b0b0;
+    }
+    textarea{
+        width: 100%;
+        resize: vertical;
+        height: 100px;
+    }
+}
